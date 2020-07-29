@@ -99,6 +99,41 @@ function Project () {
     setTimeout(() => { left.navi.next_page(); left.update() }, 200)
   }
 
+  this.open_dir_user = function () {
+    const paths = dialog.showOpenDialogSync(app.win, { properties: ['openDirectory'] })
+    this.open_dir(paths)
+    setTimeout(() => { left.navi.next_page(); left.update() }, 200)
+  }
+
+  this.open_dir = function (paths) {
+    console.log('Open Folder: ${paths}')
+
+    if (!paths) { console.log('Nothing to load'); return }
+
+    try {
+
+      let dirContent = fs.readdirSync(directory)
+
+      dirContent.forEach( path => {
+
+        const fullPath = join(directory,path);
+
+        if ( fs.statSync(fullPath).isFile() ){
+          console.log(fullPath)
+          this.add(fullPath)
+        } else {
+          this.open_dir
+        }
+      })
+
+    } catch(ex) {
+      console.log(ex);
+      return false;
+    }
+
+    setTimeout(() => { left.navi.next_page(); left.update() }, 200)
+  }
+
   this.save = function () {
     console.log('Save Page')
 

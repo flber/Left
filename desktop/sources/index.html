@@ -45,6 +45,7 @@
 
       left.controller.add('default', 'File', 'New', () => { left.project.new() }, 'CmdOrCtrl+N')
       left.controller.add('default', 'File', 'Open', () => { left.project.open() }, 'CmdOrCtrl+O')
+      left.controller.add('default', 'File', 'Open Folder', () => { left.project.open_dir_user() }, 'CmdOrCtrl+Shift+O')
       left.controller.add('default', 'File', 'Save', () => { left.project.save() }, 'CmdOrCtrl+S')
       left.controller.add('default', 'File', 'Save As', () => { left.project.save_as() }, 'CmdOrCtrl+Shift+S')
       left.controller.add('default', 'File', 'Discard Changes', () => { left.project.discard() }, 'CmdOrCtrl+D')
